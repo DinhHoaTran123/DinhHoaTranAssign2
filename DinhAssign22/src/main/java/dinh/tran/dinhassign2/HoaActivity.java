@@ -25,7 +25,7 @@ public class HoaActivity<spinner> extends AppCompatActivity {
     private EditText cvv;
     private EditText phone;
     Button button3;
-    ArrayList<String> addtopping;
+    ArrayList<String> addtopping = new ArrayList<>();
     String size,type,topping="";
     TextView printsize,printtype,printtopping;
 
@@ -33,26 +33,23 @@ public class HoaActivity<spinner> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoa);
+        printtype = (TextView)findViewById(R.id.printtype);
+        printsize = (TextView)findViewById(R.id.printsize);
+        printtopping = (TextView)findViewById(R.id.printtopping);
         inte = getIntent();
         piz = inte.getExtras();
         if(piz != null)
         {
             size = piz.getString("Size:","");
             type = piz.getString("Type:","");
-            addtopping = piz.getStringArrayList("Toppings:");
+            addtopping = piz.getStringArrayList("Topping:");
         }
-        printsize = findViewById(R.id.printsize);
-        printsize.setText(size);
-        printtype = findViewById(R.id.printtype);
-        printtype.setText(type);
-        printtopping = findViewById(R.id.printtopping);
         printtype.setText(String.format("Type:%s",type));
         printsize.setText(String.format("Size:%s",size));
         for( int i=0; i < addtopping.size() ; i++)
         {
             topping += addtopping.get(i) + "\n";
         }
-
         printtopping.setText(String.format("Topping:%s",topping));
 
 

@@ -203,7 +203,6 @@ public class TranActivity extends AppCompatActivity {
                 }
             }
         });
-
         button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -239,6 +238,7 @@ public class TranActivity extends AppCompatActivity {
         }
 
     }
+
 
 
 }
