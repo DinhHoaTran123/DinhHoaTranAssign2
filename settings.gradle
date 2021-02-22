@@ -1,0 +1,2 @@
+include ':DinhAssign22'
+rootProject.name = "DinhAssign2"
