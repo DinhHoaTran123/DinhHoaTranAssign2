@@ -217,7 +217,7 @@ public class TranActivity extends AppCompatActivity {
         Intent a = getIntent();
         ImageView pic = (ImageView) findViewById(R.id.imageView);
 
-    String Touch = a.getStringExtra("press");
+        String Touch = a.getStringExtra("press");
 
 
 
