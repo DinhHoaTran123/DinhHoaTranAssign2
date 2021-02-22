@@ -39,6 +39,7 @@ public class DinhActivity extends AppCompatActivity {
         papa.setOnClickListener(new Touchthis());
 
         button = findViewById(R.id.button);
+
         Intent intent = new Intent(DinhActivity.this,TranActivity.class);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +60,7 @@ public class DinhActivity extends AppCompatActivity {
                     intent.putExtra("press",Touch);
                     startActivity(intent);
                 }
-                else if (Touch == "gotclick")
+                else if (Touch == "godclick")
                 {
                     intent.putExtra("press",Touch);
                     startActivity(intent);
