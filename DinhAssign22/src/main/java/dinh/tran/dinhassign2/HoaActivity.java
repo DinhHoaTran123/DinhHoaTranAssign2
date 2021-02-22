@@ -1,4 +1,5 @@
 package dinh.tran.dinhassign2;
+//DinhHoaTran - n01354661
 
 import androidx.appcompat.app.AppCompatActivity;
 
