@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DinhAssign2">
-        <activity android:name=".HoaActivity"></activity>
+        <activity android:name=".DinhActivity3"></activity>
+        <activity android:name=".HoaActivity" />
         <activity android:name=".TranActivity" />
         <activity android:name=".DinhActivity">
             <intent-filter>

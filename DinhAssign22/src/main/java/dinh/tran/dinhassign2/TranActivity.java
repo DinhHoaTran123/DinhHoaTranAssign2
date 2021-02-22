@@ -2,6 +2,7 @@ package dinh.tran.dinhassign2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,9 +23,8 @@ public class TranActivity extends AppCompatActivity {
     RadioButton chesse,thinandcrispy,thin,stuffedcrust,a,b,c,d;
     RadioGroup groupsize,grouptype;
     Bundle piz;
-    String website;
-    String type;
-    String size;
+    String pizzatype;
+    String pizzasize;
     int i,p;
 
     @Override
@@ -46,21 +46,21 @@ public class TranActivity extends AppCompatActivity {
         grouptype.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkid)
+            public void onCheckedChanged(RadioGroup group, int checkId)
             {
-                switch (checkid)
+                switch (checkId)
                 {
                     case R.id.radioButton:
-                        type = chesse.getText().toString();
+                        pizzatype = chesse.getText().toString();
                     break;
                     case R.id.radioButton3:
-                        type = thinandcrispy.getText().toString();
+                        pizzatype = thinandcrispy.getText().toString();
                         break;
                     case R.id.radioButton2:
-                        type = thin.getText().toString();
+                        pizzatype = thin.getText().toString();
                         break;
                     case R.id.radioButton4:
-                        type = stuffedcrust.getText().toString();
+                        pizzatype = stuffedcrust.getText().toString();
                         break;
                 }
 
@@ -69,21 +69,21 @@ public class TranActivity extends AppCompatActivity {
         groupsize.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkid)
+            public void onCheckedChanged(RadioGroup group, int checkId)
             {
-                switch (checkid)
+                switch (checkId)
                 {
                     case R.id.radioButton7:
-                        size = a.getText().toString();
+                        pizzasize = a.getText().toString();
                         break;
                     case R.id.radioButton6:
-                        size = b.getText().toString();
+                        pizzasize = b.getText().toString();
                         break;
                     case R.id.radioButton8:
-                        size = c.getText().toString();
+                        pizzasize = c.getText().toString();
                         break;
                     case R.id.radioButton5:
-                        size = d.getText().toString();
+                        pizzasize = d.getText().toString();
                         break;
                 }
 
@@ -203,14 +203,24 @@ public class TranActivity extends AppCompatActivity {
                 }
             }
         });
+
+
         button2 = findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TranActivity.this, "Choice type, size and topping", Toast.LENGTH_LONG).show();
                 Intent screen3 = new Intent(TranActivity.this, HoaActivity.class);
-                startActivity(screen3);
 
+               if (groupsize.getCheckedRadioButtonId() != -1 && grouptype.getCheckedRadioButtonId() != -1  && i > 0) {
+                   piz.putString("Type", pizzatype);
+                   piz.putString("Size", pizzasize);
+                   piz.putStringArrayList("Topping", topping);
+                   screen3.putExtras(piz);
+                   startActivity(screen3);
+               }
+               else {
+                   Toast.makeText(TranActivity.this, "Choice type, size and topping", Toast.LENGTH_LONG).show();
+               }
             }
         });
 

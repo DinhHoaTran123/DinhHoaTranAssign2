@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class HoaActivity<spinner> extends AppCompatActivity {
     Spinner spinner;
-    Intent inte;
+    Intent intent;
     Bundle piz;
     private EditText nameoncard;
     private EditText cardnumber;
@@ -25,32 +25,41 @@ public class HoaActivity<spinner> extends AppCompatActivity {
     private EditText cvv;
     private EditText phone;
     Button button3;
-    ArrayList<String> addtopping = new ArrayList<>();
-    String size,type,topping="";
-    TextView printsize,printtype,printtopping;
+    ArrayList<String> topping = new ArrayList<>();
+    String size,type,Toppings="";
+    TextView prsize,prtype,prtopping;
+    String ptype,psize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoa);
-        printtype = (TextView)findViewById(R.id.printtype);
-        printsize = (TextView)findViewById(R.id.printsize);
-        printtopping = (TextView)findViewById(R.id.printtopping);
-        inte = getIntent();
-        piz = inte.getExtras();
-        if(piz != null)
+        piz = new Bundle();
+        prtype = (TextView)findViewById(R.id.printtype);
+        prsize = (TextView)findViewById(R.id.printsize);
+        prtopping = (TextView)findViewById(R.id.printtopping);
+        intent = getIntent();
+        piz = intent.getExtras();
+        try {if(piz != null)
         {
-            size = piz.getString("Size:","");
-            type = piz.getString("Type:","");
-            addtopping = piz.getStringArrayList("Topping:");
+            ptype = piz.getString("Type","");
+            psize = piz.getString("Size","");
+            topping = piz.getStringArrayList("Topping");
         }
-        printtype.setText(String.format("Type:%s",type));
-        printsize.setText(String.format("Size:%s",size));
-        for( int i=0; i < addtopping.size() ; i++)
-        {
-            topping += addtopping.get(i) + "\n";
+            prtype.setText(String.format("Type:%s",type));
+            prsize.setText(String.format("Size:%s",size));
+            for( int i=0; i < topping.size() ; i++)
+            {
+                Toppings += topping.get(i) + "\n";
+            }
+            prtopping.setText(String.format("Topping:%s",topping));
+
         }
-        printtopping.setText(String.format("Topping:%s",topping));
+        catch(Exception e){
+            e.printStackTrace();
+
+        }
+
 
 
 
