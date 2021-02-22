@@ -12,20 +12,64 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class DinhActivity extends AppCompatActivity {
     Button button;
+    ImageButton domino;
+    ImageButton god;
+    ImageButton hut;
+    ImageButton papa;
+    String Touch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        domino = (ImageButton) findViewById(R.id.imageButton4);
+        god = (ImageButton) findViewById(R.id.imageButton7);
+        hut = (ImageButton) findViewById(R.id.imageButton5);
+        papa = (ImageButton) findViewById(R.id.imageButton6);
+
+        domino.setOnClickListener(new Touchthis());
+        god.setOnClickListener(new Touchthis());
+        hut.setOnClickListener(new Touchthis());
+        papa.setOnClickListener(new Touchthis());
+
         button = findViewById(R.id.button);
+        Intent intent = new Intent(DinhActivity.this,TranActivity.class);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent screen2 = new Intent(DinhActivity.this,TranActivity.class);
-                startActivity(screen2);
+
+                if (Touch == "dominoclick")
+                {
+                    intent.putExtra("press",Touch);
+                    startActivity(intent);
+                }
+                else if (Touch == "hutclick")
+                {
+                    intent.putExtra("press",Touch);
+                    startActivity(intent);
+                }
+                else if (Touch == "papaclick")
+                {
+                    intent.putExtra("press",Touch);
+                    startActivity(intent);
+                }
+                else if (Touch == "gotclick")
+                {
+                    intent.putExtra("press",Touch);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(DinhActivity.this, "Please choice the restaurant", Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
     }
@@ -53,4 +97,26 @@ public class DinhActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
+
+
+
+    public class Touchthis implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            if (v.getId() == R.id.imageButton4) {
+                Touch = "dominoclick";
+            }
+            else if (v.getId() == R.id.imageButton5) {
+                Touch = "hutclick";
+            }
+            else if (v.getId() == R.id.imageButton6){
+                Touch = "papaclick";
+            }
+            else if (v.getId() == R.id.imageButton7)
+            {
+                Touch = "godclick";
+            }
+            }
+        }
+    }
