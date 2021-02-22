@@ -3,6 +3,7 @@ package dinh.tran.dinhassign2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,22 +11,52 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class HoaActivity<spinner> extends AppCompatActivity {
     Spinner spinner;
+    Intent inte;
+    Bundle piz;
     private EditText nameoncard;
     private EditText cardnumber;
     private EditText expirationdate;
     private EditText cvv;
     private EditText phone;
     Button button3;
+    ArrayList<String> addtopping;
+    String size,type,topping="";
+    TextView printsize,printtype,printtopping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hoa);
+        inte = getIntent();
+        piz = inte.getExtras();
+        if(piz != null)
+        {
+            size = piz.getString("Size:","");
+            type = piz.getString("Type:","");
+            addtopping = piz.getStringArrayList("Toppings:");
+        }
+        printsize = findViewById(R.id.printsize);
+        printsize.setText(size);
+        printtype = findViewById(R.id.printtype);
+        printtype.setText(type);
+        printtopping = findViewById(R.id.printtopping);
+        printtype.setText(String.format("Type:%s",type));
+        printsize.setText(String.format("Size:%s",size));
+        for( int i=0; i < addtopping.size() ; i++)
+        {
+            topping += addtopping.get(i) + "\n";
+        }
+
+        printtopping.setText(String.format("Topping:%s",topping));
+
+
+
         spinner = (Spinner)findViewById(R.id.spinner);
         ArrayList<String> arrayProvince = new ArrayList<String>();
         arrayProvince.add("Ontario");
@@ -74,5 +105,5 @@ public class HoaActivity<spinner> extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
         }
     };
-        }
+}
 

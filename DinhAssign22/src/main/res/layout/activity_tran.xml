@@ -7,6 +7,7 @@
     tools:context=".TranActivity">
 
     <RadioGroup
+        android:id="@+id/group1"
         android:layout_width="91dp"
         android:layout_height="189dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,7 +103,7 @@
         app:srcCompat="@drawable/hut" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/group2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +111,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442">
+        app:layout_constraintVertical_bias="0.441">
 
         <RadioButton
             android:id="@+id/radioButton"
@@ -187,27 +188,27 @@
 
     <CheckBox
         android:id="@+id/checkBox2"
-        android:layout_width="73dp"
-        android:layout_height="53dp"
+        android:layout_width="81dp"
+        android:layout_height="51dp"
         android:text="Pork"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintVertical_bias="0.782" />
 
     <CheckBox
         android:id="@+id/checkBox4"
-        android:layout_width="73dp"
-        android:layout_height="53dp"
+        android:layout_width="81dp"
+        android:layout_height="48dp"
         android:text="Turkey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.242"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.908" />
+        app:layout_constraintVertical_bias="0.904" />
 
     <TextView
         android:id="@+id/textView8"
