@@ -23,7 +23,6 @@ public class DinhActivity3 extends AppCompatActivity {
     TextView ortopping;
     String sname;
     String scardnumber;
-
     String sphone;
     String atype, asize;
     Intent intent;
@@ -44,6 +43,10 @@ public class DinhActivity3 extends AppCompatActivity {
         ortype = (TextView) findViewById(R.id.textView16);
         orsize = (TextView) findViewById(R.id.textView17);
         ortopping = (TextView) findViewById(R.id.textView18);
+        aname=(TextView)findViewById(R.id.textView20);
+        aphone=(TextView)findViewById(R.id.textView21);
+        acardnumber=(TextView)findViewById(R.id.textView22);
+
         intent = getIntent();
         check = intent.getExtras();
         button4=findViewById(R.id.button4);
