@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,14 +41,46 @@ public class HoaActivity<spinner> extends AppCompatActivity {
         prtopping = (TextView)findViewById(R.id.printtopping);
         intent = getIntent();
         piz = intent.getExtras();
+        button3=findViewById(R.id.button3);
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(nameoncard.length() < 3)
+                {
+                    nameoncard.setError("Minnimum 3 character:");
+                }
+                else if(cardnumber.length() == 0)
+                {
+                    cardnumber.setError("Enter number card:");
+                }
+                else if(expirationdate.length() == 0)
+                {
+                    expirationdate.setError("Enter the date:");
+                }
+                else if(cvv.length()==0)
+                {
+                    cvv.setError("Enter CVV");
+                }
+                else if(phone.length() == 0)
+                {
+                    phone.setError("Enter your number");
+                }
+                else {
+                    Intent screen4 = new Intent(HoaActivity.this, DinhActivity3.class);
+                    startActivity(screen4);
+                }
+            }
+        });
+
         try {if(piz != null)
         {
             ptype = piz.getString("Type","");
             psize = piz.getString("Size","");
             topping = piz.getStringArrayList("Topping");
         }
-            prtype.setText(String.format("Type:%s",type));
-            prsize.setText(String.format("Size:%s",size));
+            prtype.setText(String.format("Type:%s",ptype));
+            prsize.setText(String.format("Size:%s",psize));
             for( int i=0; i < topping.size() ; i++)
             {
                 Toppings += topping.get(i) + "\n";
@@ -111,5 +144,6 @@ public class HoaActivity<spinner> extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
         }
     };
+
 }
 

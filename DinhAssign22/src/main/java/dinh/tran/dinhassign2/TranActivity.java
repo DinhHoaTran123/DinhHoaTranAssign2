@@ -210,16 +210,19 @@ public class TranActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent screen3 = new Intent(TranActivity.this, HoaActivity.class);
-
                if (groupsize.getCheckedRadioButtonId() != -1 && grouptype.getCheckedRadioButtonId() != -1  && i > 0) {
                    piz.putString("Type", pizzatype);
                    piz.putString("Size", pizzasize);
                    piz.putStringArrayList("Topping", topping);
                    screen3.putExtras(piz);
                    startActivity(screen3);
+
                }
+
                else {
                    Toast.makeText(TranActivity.this, "Choice type, size and topping", Toast.LENGTH_LONG).show();
+
+
                }
             }
         });
