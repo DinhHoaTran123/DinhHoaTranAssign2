@@ -12,8 +12,8 @@ public class DinhActivity3 extends AppCompatActivity {
 
     ArrayList<String> topping = new ArrayList<>();
     String size,type,Toppings="";
-    TextView prsize,prtype,prtopping;
-    String ptype,psize;
+    TextView orsize,ortype,ortopping;
+    String atype,asize;
     Intent intent;
     Bundle piz;
 
@@ -22,25 +22,25 @@ public class DinhActivity3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dinh3);
         piz = new Bundle();
-        prtype = (TextView)findViewById(R.id.printtype);
-        prsize = (TextView)findViewById(R.id.printsize);
-        prtopping = (TextView)findViewById(R.id.printtopping);
+        ortype = (TextView)findViewById(R.id.textView16);
+        orsize = (TextView)findViewById(R.id.textView17);
+        ortopping = (TextView)findViewById(R.id.textView18);
         intent = getIntent();
         piz = intent.getExtras();
 
         try {if(piz != null)
         {
-            ptype = piz.getString("Type","");
-            psize = piz.getString("Size","");
+            atype = piz.getString("Type","");
+            asize = piz.getString("Size","");
             topping = piz.getStringArrayList("Topping");
         }
-            prtype.setText(String.format("Type:%s",ptype));
-            prsize.setText(String.format("Size:%s",psize));
+            ortype.setText(String.format("Type:%s",atype));
+            orsize.setText(String.format("Size:%s",asize));
             for( int i=0; i < topping.size() ; i++)
             {
                 Toppings += topping.get(i) + "\n";
             }
-            prtopping.setText(String.format("Topping:%s",topping));
+            ortopping.setText(String.format("Topping:%s",topping));
 
         }
         catch(Exception e){
