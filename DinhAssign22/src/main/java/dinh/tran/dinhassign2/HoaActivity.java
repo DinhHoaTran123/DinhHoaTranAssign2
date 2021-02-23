@@ -30,6 +30,8 @@ public class HoaActivity<spinner> extends AppCompatActivity {
     String size,type,Toppings="";
     TextView prsize,prtype,prtopping;
     String ptype,psize;
+    Bundle hum;
+    String name,number,date,cv,phonen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class HoaActivity<spinner> extends AppCompatActivity {
         intent = getIntent();
         piz = intent.getExtras();
         button3=findViewById(R.id.button3);
+        hum = new Bundle();
 
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +70,17 @@ public class HoaActivity<spinner> extends AppCompatActivity {
                     phone.setError("Enter your number");
                 }
                 else {
+                    name = nameoncard.getText().toString();
+                    number = cardnumber.getText().toString();
+                    date = expirationdate.getText().toString();
+                    cv = cvv.getText().toString();
+                    phonen=phone.getText().toString();
+                    hum.putString("nameoncard", name);
+                    hum.putString("cardnumber",number);
+                    hum.putString("phone",phonen);
+                    hum.putString("Size", psize);
+                    hum.putString("Type",ptype);
+                    hum.putStringArrayList("Topping", topping);
                     Intent screen4 = new Intent(HoaActivity.this, DinhActivity3.class);
                     startActivity(screen4);
                 }
